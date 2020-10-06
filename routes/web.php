@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/aboutus', function(){
+    echo "Ini Merupakan contoh sebuah page (page About)";
+})->name("tentang");
+
+Route::get('/show/{id?}', function($id=1){
+    echo "Paramter ID: " . $id;
+})->where('id','[0-9]+');
+
+Route::get('/utama',function(){
+    echo "Ini Page Utama";
+    echo "<br>";
+    echo "<a href='".route('tentang')."'>About</a>";
+});
