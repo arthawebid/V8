@@ -30,5 +30,4 @@ Route::get('/utama',function(){
     echo "<br>";
     echo "<a href='".route('tentang')."'>About</a>";
 });
-
 Route::get('/produk',[produkController::class,'index']);
