@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\produkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,3 +30,5 @@ Route::get('/utama',function(){
     echo "<br>";
     echo "<a href='".route('tentang')."'>About</a>";
 });
+
+Route::get('/produk',[produkController::class,'index']);
