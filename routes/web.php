@@ -1,7 +1,9 @@
 <?php
  
 use illuminate\support\facades\route;
-use App\Http\controllers\produkController;
+use App\Http\Controllers\Prak9Controller;
+use App\Http\Controllers\Prak10Controller;
+use App\Http\Controllers\Prak11Controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,22 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function () {
-   echo "ini merupakan contoh sebuah page (page about)"  ;
-})->name("about");
+Route::get('/prak9_01',[Prak9Controller::class,'QB_tugas1']);
+Route::get('/prak9_02',[Prak9Controller::class,'QB_tugas2']);
+Route::get('/prak9_03',[Prak9Controller::class,'QB_tugas3']);
+Route::resource('/prak10',Prak10Controller::class);
 
-Route::get('/show/{id?}', function ($id=1) {
-echo "Nilai Parameter Adalah ".$id;
-});
-
-Route::get('/home', function () {
-echo "<a href='".route('about')."'>page about </a>";
-});
-
-Route::get('/produk',[produkController::class,'index']);
-
-Route::get('/latihanView01', function(){
-    return view("latihan01");
-});
-
-Route::get('/produk/showproduk',[produkController::class,'showproduk']);
+//Versi 8
+Route::resource('/prak11',Prak11Controller::class);
