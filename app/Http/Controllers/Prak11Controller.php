@@ -3,11 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\kategori;
 use App\Models\produks;
 
 class Prak11Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/prak11');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -90,7 +106,13 @@ class Prak11Controller extends Controller
      */
     public function edit($id)
     {
-        //
+        //Perubahan Data Produks berdasarkan kodeID Produk
+        //1. mencari data produk yang akan di ubah
+        $PData = produks::where("id",$id)->first();
+        //2. menampilkan jenis produk
+        $KData = kategori::get();
+
+        return view('praktikum11.edit',compact('PData','KData'));
     }
 
     /**
@@ -102,7 +124,17 @@ class Prak11Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Menerima Perubahan Data dan menyimpan
+        $PData = produks::where("id",$id)->update([
+            'namaproduk'=> $request->txProduk,
+            'harga_beli'=>$request->txHrgBeli,
+            'harga_jual'=> $request->txHrgJual,
+            'qty'=>$request->txQTY,
+            'id_kat'=> $request->txKategori,
+        ]);
+
+        //mengarahkan halaman web ke page index
+        return redirect()->route('prak11.index');
     }
 
     /**
@@ -113,6 +145,11 @@ class Prak11Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        //menghapus data berdasarkan id
+        $PData = produks::where("id",$id)->delete();
+
+        //mengarahkan halaman web ke page index
+        //return redirect()->route('prak11.index');
+        echo "Penghapusan data Sukses";
     }
 }

@@ -28,7 +28,8 @@ class Prak9Controller extends Controller
     public function QB_tugas3(){
         $PData = DB::table('produks')
             ->join('kategori','produks.id_kat','=','kategori.idkat')
-            ->get();
+            ->where('produks.namaproduk','apa')
+            ->first();
 
         $JRek1 = DB::table('produks')
             ->join('kategori','produks.id_kat','=','kategori.idkat')

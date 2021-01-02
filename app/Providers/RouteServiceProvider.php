@@ -16,8 +16,11 @@ class RouteServiceProvider extends ServiceProvider
      * This is used by Laravel authentication to redirect users after login.
      *
      * @var string
+     * 
+     * Mengarahkan dashboard ke prak11
      */
-    public const HOME = '/home';
+
+    public const HOME = '/prak11';
 
     /**
      * The controller namespace for the application.

@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Edit Data Kategori ~ Latihan Praktikum 10</title>
-    </head>
-    <body>
+@extends('praktikum')
+@section('JUDULPAGE','Penambahan data stok Produk')
+@section('KONTEN')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route('prak10.index')}}">produk</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Penambahan Produk</li>
+  </ol>
+</nav>
         <h2>Edit Data kategori ID: {{$EDt->idkat}} </h2>
         <form method="POST" action="/prak10">
         @csrf()
@@ -17,7 +20,7 @@
                 <input type="text" name="txdesk" value="{{ $EDt->keterangan }}">
             </div>
             <div class="tombol">
-                <input type="submit" class="btn" name="btnkirim" value=" Simpan Data ">
+                <input type="submit" class="btn btn-primary" name="btnkirim" value=" Simpan Data ">
             </div>
             <div class="catatan">
                 * harus diisi
@@ -28,8 +31,7 @@
         @csrf()
         @method('DELETE')
         <div class="tombol">
-                <input type="submit" class="btn" name="btnkirim" value=" Hapus Data ">
+                <input type="submit" class="btn btn-danger" name="btnkirim" value=" Hapus Data ">
             </div>
         </form>
-    </body>
-</html>
+@endsection

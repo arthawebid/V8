@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Menambahkan Data Kategori ~ Latihan Praktikum 10</title>
-    </head>
-    <body>
+@extends('praktikum')
+@section('JUDULPAGE','Penambahan data stok Produk')
+@section('KONTEN')
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route('prak10.index')}}">produk</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Penambahan Produk</li>
+  </ol>
+</nav>
         <h2>Menambahkan Data kategori </h2>
 
         @if (count($errors) > 0)
@@ -33,5 +36,4 @@
                 * harus diisi
             </div>
         </form>
-    </body>
-</html>
+@endsection
